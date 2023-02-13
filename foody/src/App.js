@@ -5,6 +5,7 @@ import Recipe from "./components/Recipe";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     showRecipe();
@@ -12,17 +13,26 @@ function App() {
 
   const showRecipe = async () => {
     const response = await fetch(
-      `https://api.edamam.com/api/recipes/v2?type=public&q=fish&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
+      `https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
     );
     const data = await response.json();
     setRecipes(data.hits);
-    console.log(data.hits);
+  };
+
+  const inputHandler = (event) => {
+    setSearch(event.target.value);
+    console.log(event.target.value);
   };
 
   return (
     <div className="foody">
       <form className="search-form" action="">
-        <input className="search-bar" type="text" />
+        <input
+          className="search-bar"
+          type="text"
+          value={search}
+          onChange={inputHandler}
+        />
         <button className="search-button" type="submit">
           Discover
         </button>
