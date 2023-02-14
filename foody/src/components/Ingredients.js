@@ -1,16 +1,14 @@
-const Ingredients = (props) =>{
-
-    const ing = [props.ingredients];
-    console.log(ing);
-
-    return (
+const Ingredients = (props) => {
+  const ingredients = props.ingredientsText;
+  return (
     <div>
-        <ol>
-            {ing.map(ingredient => (<li>{ingredient.text}</li>))}
-        </ol>
+      <ol>
+        {ingredients.map((ingredient) => (
+          <li>{ingredient.text}</li>
+        ))}
+      </ol>
     </div>
-    );
-}
+  );
+};
 
 export default Ingredients;
-

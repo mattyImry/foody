@@ -51,6 +51,8 @@ function App() {
           calories={recipe.recipe.calories}
           image={recipe.recipe.image}
           ingredients={recipe.recipe.ingredients}
+          type={recipe.recipe.mealType}
+          dishType={recipe.recipe.dishType}
         />
       ))}
     </div>
