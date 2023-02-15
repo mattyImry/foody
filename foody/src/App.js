@@ -40,7 +40,7 @@ function App() {
           value={search}
           onChange={inputHandler}
         />
-        <Button className="search-button" type="submit">
+        <Button className="button" type="submit">
           Discover
         </Button>
       </form>
