@@ -1,16 +1,18 @@
 import Ingredients from "./Ingredients";
 
+import classes from "./Recipe.module.css"
+
 const Recipe = (props) => {
 
     const cal = Math.floor(props.calories);
 
     return(
-        <div className="recipe">
+        <div className={classes.recipe}>
             <h1>{props.title}</h1>
-            <h3>Ideal for: {props.type}</h3>
-            <h3>Type of Dish:{props.dishType}</h3>
+            <h3>Ideal for: <span>{props.type}</span></h3>
+            <h3>Type of Dish: <span>{props.dishType}</span></h3>
             <img src={props.image} alt="" />
-            <h4>Calories:{cal}</h4>
+            <h4> Total Calories: <span>{cal}</span></h4>
             <Ingredients ingredientsText={props.ingredients} />
         </div>
     );

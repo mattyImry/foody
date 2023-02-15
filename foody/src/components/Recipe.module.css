@@ -1,0 +1,12 @@
+/* .recipe {
+    display: flex;
+    flex-direction: column; ;
+} */
+
+h3 span, h4 span{
+    font-weight: lighter;
+}
+
+.recipe img {
+    max-width: 25%;
+}
