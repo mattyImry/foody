@@ -1,0 +1,20 @@
+.search_form{
+    margin: 20px;
+}
+
+.foody {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    
+    
+}  
+
+.recipe {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 50px;
+}
+
+
+
