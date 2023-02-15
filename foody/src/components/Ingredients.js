@@ -1,17 +1,18 @@
 import React, { useState } from "react";
+import classes from "./Ingredients.module.css";
 
 import Button from "../UI/Button";
 
 const Ingredients = (props) => {
   const [isClicked, setIsclicked] = useState(false);
+  const ingredients = props.ingredientsText;
 
   function submitHandler() {
-    console.log("clicked");
     setIsclicked((isClicked) => !isClicked);
   }
-  const ingredients = props.ingredientsText;
+
   return (
-    <div>
+    <div className={classes.ingredients_text}>
       {isClicked && (
         <ol>
           {ingredients.map((ingredient) => (

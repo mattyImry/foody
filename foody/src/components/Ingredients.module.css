@@ -1,0 +1,9 @@
+.ingredients_text {
+    text-align: center;
+    font-weight: bold;
+}
+
+.ingredients_text ol {
+    list-style-type: none
+    ;
+}
