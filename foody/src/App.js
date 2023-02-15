@@ -9,17 +9,16 @@ function App() {
   const [completeRequest, setCompleteRequest] = useState("");
 
   useEffect(() => {
+    const showRecipe = async () => {
+      const response = await fetch(
+        `https://api.edamam.com/api/recipes/v2?type=public&q=${completeRequest}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
+      );
+      const data = await response.json();
+      setRecipes(data.hits);
+      console.log(data.hits);
+    };
     showRecipe();
   }, [completeRequest]);
-
-  const showRecipe = async () => {
-    const response = await fetch(
-      `https://api.edamam.com/api/recipes/v2?type=public&q=${completeRequest}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
-    );
-    const data = await response.json();
-    setRecipes(data.hits);
-    console.log(data.hits);
-  };
 
   const inputHandler = (event) => {
     setSearch(event.target.value);
