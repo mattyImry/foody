@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./App.css";
 import Recipe from "./components/Recipe";
+import Button from "./UI/Button";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -39,9 +40,9 @@ function App() {
           value={search}
           onChange={inputHandler}
         />
-        <button className="search-button" type="submit">
+        <Button className="search-button" type="submit">
           Discover
-        </button>
+        </Button>
       </form>
       {recipes.map((recipe) => (
         <Recipe
