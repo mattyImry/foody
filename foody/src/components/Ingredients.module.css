@@ -1,8 +1,14 @@
 .ingredients_text {
     text-align: center;
     font-weight: bold;
+    
 }
 
 .ingredients_text ul {
     list-style-type: none;
+    padding: 0;
+}
+
+.ingredients_text li {
+    padding-bottom: 3px;
 }

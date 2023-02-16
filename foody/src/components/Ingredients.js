@@ -20,7 +20,7 @@ const Ingredients = (props) => {
           ))}
         </ul>
       )}
-      <Button className="button" onClick={submitHandler}>
+      <Button className={classes.button} onClick={submitHandler}>
         {!isClicked ? "Show Ingredients" : "Hide Ingredients"}
       </Button>
     </div>
