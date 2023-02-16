@@ -14,11 +14,11 @@ const Ingredients = (props) => {
   return (
     <div className={classes.ingredients_text}>
       {isClicked && (
-        <ol>
+        <ul>
           {ingredients.map((ingredient) => (
             <li>{ingredient.text}</li>
           ))}
-        </ol>
+        </ul>
       )}
       <Button className="button" onClick={submitHandler}>
         {!isClicked ? "Show Ingredients" : "Hide Ingredients"}

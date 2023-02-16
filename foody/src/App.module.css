@@ -6,14 +6,17 @@
     display: flex;
     text-align: center;
     flex-direction: column;
-    
-    
 }  
 
-.recipe {
+.recipe_wrap {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin: 50px;
+    grid-template-columns: repeat(3, 1fr); 
+    margin: 20px;
+    
+}
+
+.card_recipe{
+    margin: 20px;
 }
 
 

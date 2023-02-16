@@ -1,7 +1,6 @@
-/* .recipe {
-    display: flex;
-    flex-direction: column; ;
-} */
+.recipe {
+   margin: 10px;
+}
 
 h3 span, h4 span{
     font-weight: lighter;
