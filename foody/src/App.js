@@ -23,6 +23,7 @@ function App() {
     }, [completeRequest]);
 
     const inputHandler = (event) => {
+        console.log(event.target.value);
         setSearch(event.target.value);
     };
 
@@ -39,8 +40,8 @@ function App() {
             <form className={classes.search_form} onSubmit={submitHandler}>
                 <Input
                     type="text"
-                    // value={search}
-                    // onChange={inputHandler}
+                    className="input"
+                    onChange={inputHandler}
                     placeholder="Search Recipe"
                 />
                 <Button className="button" type="submit">
