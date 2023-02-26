@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-import classes from "./App.module.css";
 import Recipe from "./components/Recipe";
 import Button from "./UI/Button";
 import Card from "./UI/Card";
 import Input from "./UI/Input";
+
+import classes from "./App.module.css";
 
 function App() {
     const [recipes, setRecipes] = useState([]);
@@ -38,13 +39,8 @@ function App() {
             {!completeRequest ? <h1>What do you fancy today? </h1> : <h1>Enjoy!</h1>}
 
             <form className={classes.search_form} onSubmit={submitHandler}>
-                <Input
-                    type="text"
-                    className="input"
-                    onChange={inputHandler}
-                    placeholder="Search Recipe"
-                />
-                <Button className="button" type="submit">
+                <Input type="text" onChange={inputHandler} placeholder="Search Recipe" />
+                <Button type="submit">
                     <b>Discover</b>
                 </Button>
             </form>

@@ -2,11 +2,13 @@
     display: flex;
     text-align: center;
     flex-direction: column;
-    background-color: blueviolet;
+    background-color: rgb(182, 187, 175);
+    min-height: 100vmax;
 }
 
 .foody h1 {
     margin-top: 50px;
+    color: #black;
 }
 
 .search_form {
@@ -28,9 +30,6 @@
 @media (max-width: 768px) {
     .recipe_wrap {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .search_bar {
     }
 }
 
