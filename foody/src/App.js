@@ -12,6 +12,10 @@ function App() {
     const [search, setSearch] = useState("");
     const [completeRequest, setCompleteRequest] = useState("");
 
+    // Only 10 request per minutes are allowed by this API
+    // 'search' variable is used also to avoid the limit of 10 request
+    // by collecting all the 'input value' then use it as value for completeRequest
+
     useEffect(() => {
         const showRecipe = async () => {
             const response = await fetch(
@@ -24,7 +28,6 @@ function App() {
     }, [completeRequest]);
 
     const inputHandler = (event) => {
-        console.log(event.target.value);
         setSearch(event.target.value);
     };
 
