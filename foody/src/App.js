@@ -6,6 +6,7 @@ import Card from "./UI/Card";
 import Input from "./UI/Input";
 
 import classes from "./App.module.css";
+import LoadingSpinner from "./UI/LoadingSpinner";
 
 function App() {
     const [recipes, setRecipes] = useState([]);
@@ -58,7 +59,7 @@ function App() {
                 </Button>
             </form>
             {isLoading ? (
-                <p>Loading ...</p>
+                <LoadingSpinner />
             ) : (
                 <div className={classes.recipe_wrap}>
                     {recipes.map((recipe) => (

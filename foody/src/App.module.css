@@ -29,6 +29,8 @@
     margin: 20px;
 }
 
+/* MEDIA QUERY */
+
 @media (max-width: 768px) {
     .recipe_wrap {
         grid-template-columns: repeat(2, 1fr);
