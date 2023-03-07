@@ -74,6 +74,7 @@ function App() {
                                 ingredients={recipe.recipe.ingredients}
                                 type={recipe.recipe.mealType}
                                 dishType={recipe.recipe.dishType}
+                                cousine={recipe.recipe.cuisineType}
                             />
                         </Card>
                     ))}
