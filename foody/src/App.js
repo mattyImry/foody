@@ -34,6 +34,7 @@ function App() {
             }
             setIsLoading(false);
         };
+
         showRecipe();
     }, [completeRequest]);
 
@@ -52,6 +53,7 @@ function App() {
             {!completeRequest ? <h1>What do you fancy today? </h1> : <h1>Enjoy!</h1>}
 
             {hasError && <h1>Something went wrong!</h1>}
+
             <form className={classes.search_form} onSubmit={submitHandler}>
                 <Input type="text" onChange={inputHandler} placeholder="Search Recipe" />
                 <Button type="submit">
