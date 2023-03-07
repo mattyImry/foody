@@ -12,6 +12,7 @@ function App() {
     const [search, setSearch] = useState("");
     const [completeRequest, setCompleteRequest] = useState("");
     const [hasError, setHasError] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     // Only 10 request per minutes are allowed by this API
     // 'search' variable is used also to avoid the limit of 10 request
@@ -19,6 +20,7 @@ function App() {
 
     useEffect(() => {
         const showRecipe = async () => {
+            setIsLoading(true);
             setHasError(false);
             try {
                 const response = await fetch(
@@ -29,6 +31,7 @@ function App() {
             } catch (error) {
                 setHasError(true);
             }
+            setIsLoading(false);
         };
         showRecipe();
     }, [completeRequest]);
@@ -54,22 +57,25 @@ function App() {
                     <b>Discover</b>
                 </Button>
             </form>
-
-            <div className={classes.recipe_wrap}>
-                {recipes.map((recipe) => (
-                    <Card className={classes.card_recipe}>
-                        <Recipe
-                            key={recipe.recipe.label}
-                            title={recipe.recipe.label}
-                            calories={recipe.recipe.calories}
-                            image={recipe.recipe.image}
-                            ingredients={recipe.recipe.ingredients}
-                            type={recipe.recipe.mealType}
-                            dishType={recipe.recipe.dishType}
-                        />
-                    </Card>
-                ))}
-            </div>
+            {isLoading ? (
+                <p>Loading ...</p>
+            ) : (
+                <div className={classes.recipe_wrap}>
+                    {recipes.map((recipe) => (
+                        <Card className={classes.card_recipe}>
+                            <Recipe
+                                key={recipe.recipe.label}
+                                title={recipe.recipe.label}
+                                calories={recipe.recipe.calories}
+                                image={recipe.recipe.image}
+                                ingredients={recipe.recipe.ingredients}
+                                type={recipe.recipe.mealType}
+                                dishType={recipe.recipe.dishType}
+                            />
+                        </Card>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
