@@ -2,7 +2,7 @@ Searching recipes app built with ReactJS
 
 # **_Foody_**
 
-This project is created to solidify my knowledge of ReactJS. This app is built in stages with the support of the ReactJs course. My learning technique is to apply all the principle that I learn on the course to the project.
+This project is created to solidify my knowledge of ReactJS.
 
 ## **_UX_**
 
@@ -44,6 +44,12 @@ The fonts chosen are from [Google Fonts](https://fonts.google.com/) 'IBM Plex Mo
 ## **_Technology Used_**
 
 Main technology is ReactJS https://reactjs.org/.
+
+## **_Development notes_**
+
+I have applied lots of new concepts in this project. For example in the fetch() function in app.js I really wanted to catch errors to be able to advise the user about it. I have also created few reusable elements for the UI to be able to scale the project and save time by creating general components.
+
+To do list: Testing, deployment ,finish readme.
 
 ## **_Credits_**
 
