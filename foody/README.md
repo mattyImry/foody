@@ -2,7 +2,7 @@ Searching recipes app built with ReactJS
 
 # **_Foody_**
 
-This project is created to solidify my knowledge of ReactJS.
+This project is created to solidify my knowledge of ReactJS. This app is built in stages with the support of the ReactJs course. My learning technique is to apply all the principle that I learn on the course to the project.
 
 ## **_UX_**
 
