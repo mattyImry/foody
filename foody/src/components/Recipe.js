@@ -20,7 +20,6 @@ const Recipe = (props) => {
 
             <img src={props.image} alt="" />
             <h4>
-                {" "}
                 Total Calories: <span>{cal} Kcal</span>
             </h4>
             <Ingredients ingredientsText={props.ingredients} />

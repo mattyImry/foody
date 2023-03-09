@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-import Recipe from "./components/Recipe";
 import Button from "./UI/Button";
-import Card from "./UI/Card";
 import Input from "./UI/Input";
 
 import classes from "./App.module.css";
 import LoadingSpinner from "./UI/LoadingSpinner";
+import RecipesList from "./components/RecipesList";
+
+// Only 10 request per minutes are allowed by this API
+// 'search' variable is used also to avoid the limit of 10 request
+// by collecting all the 'input value' then use it as value for completeRequest
 
 function App() {
     const [recipes, setRecipes] = useState([]);
@@ -14,10 +17,6 @@ function App() {
     const [completeRequest, setCompleteRequest] = useState("");
     const [hasError, setHasError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
-    // Only 10 request per minutes are allowed by this API
-    // 'search' variable is used also to avoid the limit of 10 request
-    // by collecting all the 'input value' then use it as value for completeRequest
 
     useEffect(() => {
         const showRecipe = async () => {
@@ -60,26 +59,7 @@ function App() {
                     <b>Discover</b>
                 </Button>
             </form>
-            {isLoading ? (
-                <LoadingSpinner />
-            ) : (
-                <div className={classes.recipe_wrap}>
-                    {recipes.map((recipe) => (
-                        <Card className={classes.card_recipe}>
-                            <Recipe
-                                key={recipe.recipe.label}
-                                title={recipe.recipe.label}
-                                calories={recipe.recipe.calories}
-                                image={recipe.recipe.image}
-                                ingredients={recipe.recipe.ingredients}
-                                type={recipe.recipe.mealType}
-                                dishType={recipe.recipe.dishType}
-                                cousine={recipe.recipe.cuisineType}
-                            />
-                        </Card>
-                    ))}
-                </div>
-            )}
+            {isLoading ? <LoadingSpinner /> : <RecipesList recipes={recipes} />}
         </div>
     );
 }
