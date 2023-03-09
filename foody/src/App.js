@@ -23,7 +23,7 @@ function App() {
         setError(null);
         try {
             const response = await fetch(
-                `https://api.edamam.com/api/recipe/v2?type=public&q=${completeRequest}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
+                `https://api.edamam.com/api/recipes/v2?type=public&q=${completeRequest}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
             );
 
             if (!response.ok) {
