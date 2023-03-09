@@ -15,20 +15,26 @@ function App() {
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState("");
     const [completeRequest, setCompleteRequest] = useState("");
-    const [hasError, setHasError] = useState(false);
+    const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
     const showRecipe = useCallback(async () => {
         setIsLoading(true);
-        setHasError(false);
+        setError(null);
         try {
             const response = await fetch(
-                `https://api.edamam.com/api/recipes/v2?type=public&q=${completeRequest}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
+                `https://api.edamam.com/api/recipe/v2?type=public&q=${completeRequest}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
             );
+
+            if (!response.ok) {
+                throw new Error("Ops an error has occured!");
+            }
+
             const data = await response.json();
+
             setRecipes(data.hits);
         } catch (error) {
-            setHasError(true);
+            setError(error.message);
         }
         setIsLoading(false);
     }, [completeRequest]);
@@ -44,14 +50,26 @@ function App() {
     const submitHandler = (event) => {
         event.preventDefault();
         setCompleteRequest(search);
-        setSearch("");
+        setSearch(" ");
     };
+
+    let listRecipes = <p className={classes.error_text}>No Recipes Found!</p>;
+
+    if (completeRequest.length > 0) {
+        listRecipes = <RecipesList recipes={recipes} />;
+    }
+
+    if (error) {
+        listRecipes = <p className={classes.error_text}>{error}</p>;
+    }
+
+    if (isLoading) {
+        listRecipes = <LoadingSpinner />;
+    }
 
     return (
         <div className={classes.foody}>
             {!completeRequest ? <h1>What do you fancy today? </h1> : <h1>Enjoy!</h1>}
-
-            {hasError && <h1>Something went wrong!</h1>}
 
             <form className={classes.search_form} onSubmit={submitHandler}>
                 <Input type="text" onChange={inputHandler} placeholder="Search Recipe" />
@@ -59,7 +77,7 @@ function App() {
                     <b>Discover</b>
                 </Button>
             </form>
-            {isLoading ? <LoadingSpinner /> : <RecipesList recipes={recipes} />}
+            {listRecipes}
         </div>
     );
 }
