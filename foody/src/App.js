@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import Button from "./UI/Button";
 import Input from "./UI/Input";
@@ -18,24 +18,24 @@ function App() {
     const [hasError, setHasError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        const showRecipe = async () => {
-            setIsLoading(true);
-            setHasError(false);
-            try {
-                const response = await fetch(
-                    `https://api.edamam.com/api/recipes/v2?type=public&q=${completeRequest}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
-                );
-                const data = await response.json();
-                setRecipes(data.hits);
-            } catch (error) {
-                setHasError(true);
-            }
-            setIsLoading(false);
-        };
-
-        showRecipe();
+    const showRecipe = useCallback(async () => {
+        setIsLoading(true);
+        setHasError(false);
+        try {
+            const response = await fetch(
+                `https://api.edamam.com/api/recipes/v2?type=public&q=${completeRequest}&app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_APP_KEY}`
+            );
+            const data = await response.json();
+            setRecipes(data.hits);
+        } catch (error) {
+            setHasError(true);
+        }
+        setIsLoading(false);
     }, [completeRequest]);
+
+    useEffect(() => {
+        showRecipe();
+    }, [completeRequest, showRecipe]);
 
     const inputHandler = (event) => {
         setSearch(event.target.value);
